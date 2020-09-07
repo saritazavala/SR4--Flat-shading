@@ -274,7 +274,7 @@ class Render(object):
 r = Render('Carota.bmp')
 r.glCreateWindow(800, 600)
 r.glClear()
-r.load_model('./face.obj', (400, 300, 0), (250, 250, 300))
+r.load_model('./face.obj', (400, 300, 0), (15, 15, 15))
 r.glFinish()
 
 
