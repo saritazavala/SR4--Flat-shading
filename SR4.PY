@@ -31,8 +31,6 @@ def color2(r, g, b):
 
 
 # Funciones matematicas dadas por Denis en clase ----------------------------
-#
-
 
 def sum(v0, v1):
   return V3(v0.x + v1.x, v0.y + v1.y, v0.z + v1.z)
@@ -268,7 +266,60 @@ class Render(object):
                 self.triangle(A, B, C) 
 
                 self.triangle(A, D, C)
+'''
+FUNCIONES NO USADAS PARA ESTE LAB
 
+    #Takes a new color  
+    def glClearColor(self, red,blue,green):
+        self.change_color = color(red,blue,green)
+
+        #Defines the area where will be able to draw
+    def glViewPort(self, x_position, y_position,  ViewPort_width, ViewPort_height):
+        self.x_position = x_position
+        self.y_position = y_position
+        self.ViewPort_height = ViewPort_height
+        self.ViewPort_width = ViewPort_width
+    
+    #Compuse el vertex por que me daba error el range
+    def glVertex(self, x, y):
+        x_temp  = round((x + 1) * (self.ViewPort_width/ 2) + self.x_position)
+        y_temp  = round((y + 1) * (self.ViewPort_height/2) + self.y_position)
+        self.glpoint(round(x_temp ), round(y_temp ))
+
+        #Codigo basado en codigo visto en clase
+    #Dennis Aldana 2020
+
+    def glLine(self, x1, y1, x2, y2):
+        
+        dy = abs(y2 - y1)
+        dx = abs(x2 - x1)
+        steep = dy > dx
+        
+        if steep:
+            x1, y1 = y1, x1
+            x2, y2 = y2, x2
+            dy = abs(y2 - y1)
+            dx = abs(x2 - x1)
+        
+        if x1 > x2:
+            x1, x2 = x2, x1
+            y1, y2 = y2, y1
+            
+        offset = 0
+        threshold = 1
+        y = y1
+        for x in range(x1, x2):
+            if steep:
+                self.glpoint(y, x)
+            else:
+                self.glpoint(x, y)
+                
+            offset += dy * 2
+            
+            if offset >= threshold:
+                y += 1 if y1 < y2 else -1
+                threshold += 2 * dx
+'''
  
 
 r = Render('Carota.bmp')
